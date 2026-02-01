@@ -36,4 +36,4 @@ Ravenswatch Gauntlet tracker for YouTuber Positive4ce. Client-side React app hos
 - **Gauntlet complete**: Detected when current win streak >= 12.
 - **Pending run**: Only one pending run (outcome=null) allowed at a time. "Next Run" button disabled until current run has outcome recorded.
 - **Reset**: "Reset Local Data" button clears localStorage, falls back to hardcoded runs only.
-- **vite base path**: Set to `/gauntlet/` for GitHub Pages deployment.
+- **vite base path**: Set to `/the-gauntlet/` for GitHub Pages deployment.
