@@ -1,0 +1,99 @@
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border-left: 4px solid transparent;
+}
+
+.card.win {
+  border-left-color: var(--color-win);
+}
+
+.card.loss {
+  border-left-color: var(--color-loss);
+}
+
+.card.pending {
+  border-left-color: var(--color-pending);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.runNumber {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.character {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.position {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+.outcome {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.outcome_win {
+  background: color-mix(in srgb, var(--color-win) 20%, transparent);
+  color: var(--color-win);
+}
+
+.outcome_loss {
+  background: color-mix(in srgb, var(--color-loss) 20%, transparent);
+  color: var(--color-loss);
+}
+
+.modifiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.btn {
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.winBtn {
+  background: var(--color-win);
+  color: var(--ctp-crust);
+}
+
+.lossBtn {
+  background: var(--color-loss);
+  color: var(--ctp-crust);
+}

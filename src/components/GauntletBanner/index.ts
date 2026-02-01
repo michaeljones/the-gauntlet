@@ -1,0 +1,1 @@
+export { GauntletBanner } from './GauntletBanner';
