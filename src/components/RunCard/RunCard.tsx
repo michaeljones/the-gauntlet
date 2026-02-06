@@ -9,8 +9,9 @@ interface RunCardProps {
 }
 
 export function RunCard({ run, onRecordOutcome }: RunCardProps) {
-  const character = CHARACTERS[run.characterId];
-  const characterPosition = (run.characterId % CHARACTERS.length) + 1;
+  const characterIndex = CHARACTERS.findIndex((c) => c.id === run.characterId);
+  const character = CHARACTERS[characterIndex];
+  const characterPosition = characterIndex + 1;
 
   return (
     <div className={`${styles.card} ${run.outcome ? styles[run.outcome] : styles.pending}`}>

@@ -1,5 +1,5 @@
 export interface Character {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -11,7 +11,7 @@ export interface Modifier {
 export interface Run {
   id: string;
   runNumber: number;
-  characterId: number;
+  characterId: string;
   modifierIds: number[];
   outcome: 'win' | 'loss' | null;
   source: 'hardcoded' | 'local';
