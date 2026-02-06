@@ -20,4 +20,22 @@ export const HARDCODED_RUNS: Run[] = [
     source: 'hardcoded',
     timestamp: 1,
   },
+  {
+    id: "3",
+    runNumber: 3,
+    characterId: 'beowulf',
+    modifierIds: ['inflation', 'lack-of-inspiration', 'angry-birds', 'oppressive-nightmare', 'berserker-foes'],
+    outcome: 'win',
+    source: 'hardcoded',
+    timestamp: 1,
+  },
+  {
+    id: "4",
+    runNumber: 4,
+    characterId: 'the-snow-queen',
+    modifierIds: ['invigorating-death', 'dried-up-fountains', 'corruption', 'disease', 'bloodlust'],
+    outcome: 'win',
+    source: 'hardcoded',
+    timestamp: 1,
+  },
 ];
