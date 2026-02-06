@@ -14,11 +14,11 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export function selectModifiers(pool: ModifierPoolState): {
-  selected: number[];
+  selected: string[];
   newPool: ModifierPoolState;
 } {
   let remaining = [...pool.remaining];
-  let selected: number[];
+  let selected: string[];
 
   if (remaining.length >= MODIFIERS_PER_RUN) {
     const shuffled = shuffleArray(remaining);
@@ -39,7 +39,7 @@ export function selectModifiers(pool: ModifierPoolState): {
   return { selected, newPool: { remaining } };
 }
 
-export function reconstructPool(allModifierSelections: number[][]): ModifierPoolState {
+export function reconstructPool(allModifierSelections: string[][]): ModifierPoolState {
   let remaining = [...ALL_MODIFIER_IDS];
 
   for (const selection of allModifierSelections) {
@@ -64,7 +64,7 @@ export function reconstructPool(allModifierSelections: number[][]): ModifierPool
   return replayPool(allModifierSelections);
 }
 
-function replayPool(allModifierSelections: number[][]): ModifierPoolState {
+function replayPool(allModifierSelections: string[][]): ModifierPoolState {
   let remaining = [...ALL_MODIFIER_IDS];
 
   for (const selection of allModifierSelections) {

@@ -13,26 +13,26 @@ describe('modifierSelection', () => {
   });
 
   it('selects 5 modifiers from a pool of 6', () => {
-    const pool = { remaining: [0, 1, 2, 3, 4, 5] };
+    const pool = { remaining: ['dried-up-fountains', 'inflation', 'lack-of-inspiration', 'bloodlust', 'corruption', 'disease'] };
     const { selected, newPool } = selectModifiers(pool);
     expect(selected).toHaveLength(5);
     expect(newPool.remaining).toHaveLength(1);
   });
 
   it('handles pool with fewer than 5 by refilling', () => {
-    const pool = { remaining: [0, 1] };
+    const pool = { remaining: ['dried-up-fountains', 'inflation'] };
     const { selected, newPool } = selectModifiers(pool);
     expect(selected).toHaveLength(5);
-    // Should include 0 and 1 (from remaining) plus 3 from refill
-    expect(selected).toContain(0);
-    expect(selected).toContain(1);
+    // Should include the two from remaining plus 3 from refill
+    expect(selected).toContain('dried-up-fountains');
+    expect(selected).toContain('inflation');
     // Remaining should be from the refill pool minus what was picked
     // Refill had 9 items (11 - 2), picked 3, so 6 remaining
     expect(newPool.remaining).toHaveLength(6);
   });
 
   it('handles empty pool by refilling completely', () => {
-    const pool = { remaining: [] };
+    const pool = { remaining: [] as string[] };
     const { selected, newPool } = selectModifiers(pool);
     expect(selected).toHaveLength(5);
     expect(newPool.remaining).toHaveLength(6);
@@ -40,7 +40,7 @@ describe('modifierSelection', () => {
 
   it('all 11 modifiers appear over exhaustive cycle', () => {
     let pool = initialPool();
-    const allSelected: number[] = [];
+    const allSelected: string[] = [];
 
     // Run 1: pick 5 from 11, leaving 6
     const r1 = selectModifiers(pool);
@@ -79,7 +79,7 @@ describe('modifierSelection', () => {
 
   it('reconstructs pool correctly from run history', () => {
     let pool = initialPool();
-    const selections: number[][] = [];
+    const selections: string[][] = [];
 
     // Simulate 3 runs
     for (let i = 0; i < 3; i++) {

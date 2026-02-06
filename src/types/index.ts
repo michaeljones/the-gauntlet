@@ -4,7 +4,7 @@ export interface Character {
 }
 
 export interface Modifier {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -12,14 +12,14 @@ export interface Run {
   id: string;
   runNumber: number;
   characterId: string;
-  modifierIds: number[];
+  modifierIds: string[];
   outcome: 'win' | 'loss' | null;
   source: 'hardcoded' | 'local';
   timestamp: number;
 }
 
 export interface ModifierPoolState {
-  remaining: number[];
+  remaining: string[];
 }
 
 export interface GauntletStats {
