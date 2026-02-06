@@ -32,6 +32,21 @@
   letter-spacing: 0.05em;
 }
 
+.youtubeLink {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ctp-red);
+  text-decoration: none;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--ctp-red) 15%, transparent);
+  transition: background 0.15s;
+}
+
+.youtubeLink:hover {
+  background: color-mix(in srgb, var(--ctp-red) 25%, transparent);
+}
+
 .character {
   font-weight: 600;
   font-size: 1.1rem;

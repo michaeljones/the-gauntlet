@@ -10,6 +10,7 @@ export const HARDCODED_RUNS: Run[] = [
     outcome: 'loss',
     source: 'hardcoded',
     timestamp: 0,
+    youtubeUrl: 'https://www.youtube.com/watch?v=Hh0LFXwM4jc',
   },
   {
     id: "2",
@@ -19,6 +20,7 @@ export const HARDCODED_RUNS: Run[] = [
     outcome: 'win',
     source: 'hardcoded',
     timestamp: 1,
+    youtubeUrl: 'https://www.youtube.com/watch?v=Hh0LFXwM4jc',
   },
   {
     id: "3",
@@ -28,6 +30,7 @@ export const HARDCODED_RUNS: Run[] = [
     outcome: 'win',
     source: 'hardcoded',
     timestamp: 1,
+    youtubeUrl: 'https://www.youtube.com/watch?v=whm6NmEN9cA',
   },
   {
     id: "4",
@@ -37,5 +40,6 @@ export const HARDCODED_RUNS: Run[] = [
     outcome: 'win',
     source: 'hardcoded',
     timestamp: 1,
+    youtubeUrl: 'https://www.youtube.com/watch?v=_CO5laVC6Bg',
   },
 ];

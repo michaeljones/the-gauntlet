@@ -16,6 +16,7 @@ export interface Run {
   outcome: 'win' | 'loss' | null;
   source: 'hardcoded' | 'local';
   timestamp: number;
+  youtubeUrl?: string;
 }
 
 export interface ModifierPoolState {

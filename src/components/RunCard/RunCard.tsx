@@ -17,6 +17,17 @@ export function RunCard({ run, onRecordOutcome }: RunCardProps) {
     <div className={`${styles.card} ${run.outcome ? styles[run.outcome] : styles.pending}`}>
       <div className={styles.header}>
         <span className={styles.runNumber}>Run {run.runNumber}</span>
+        {run.youtubeUrl && (
+          <a
+            href={run.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.youtubeLink}
+            title="Watch on YouTube"
+          >
+            YouTube
+          </a>
+        )}
         <span className={styles.character}>
           {character?.name ?? 'Unknown'}{' '}
           <span className={styles.position}>({characterPosition}/12)</span>
