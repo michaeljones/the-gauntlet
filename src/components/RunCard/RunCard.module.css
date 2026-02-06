@@ -13,10 +13,6 @@
   border-left-color: var(--color-loss);
 }
 
-.card.pending {
-  border-left-color: var(--color-pending);
-}
-
 .card.hidden {
   border-left-color: var(--ctp-overlay0);
 }
@@ -87,34 +83,6 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 0.75rem;
-}
-
-.actions {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-
-.btn {
-  padding: 0.4rem 1.25rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.875rem;
-  transition: opacity 0.15s;
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.winBtn {
-  background: var(--color-win);
-  color: var(--ctp-crust);
-}
-
-.lossBtn {
-  background: var(--color-loss);
-  color: var(--ctp-crust);
 }
 
 .revealBtn {

@@ -4,15 +4,13 @@ import { useSpoilerState } from './hooks/useSpoilerState';
 import { computeStats } from './logic/streaks';
 import { Header } from './components/Header';
 import { Stats } from './components/Stats';
-import { NextRunButton } from './components/NextRunButton';
 import { GauntletBanner } from './components/GauntletBanner';
 import { SpoilerControls } from './components/SpoilerControls';
 import { RunList } from './components/RunList';
 import styles from './App.module.css';
 
 export default function App() {
-  const { runs, stats, hasPendingRun, createNextRun, recordOutcome, resetLocalData } =
-    useGameState();
+  const { runs, stats, resetLocalData } = useGameState();
 
   const completedRuns = useMemo(() => runs.filter((r) => r.outcome !== null), [runs]);
   const maxRunNumber = completedRuns.length > 0 ? Math.max(...completedRuns.map((r) => r.runNumber)) : 0;
@@ -38,12 +36,10 @@ export default function App() {
         onRevealAll={revealAll}
         onHideAll={hideAll}
       />
-      <NextRunButton onClick={createNextRun} disabled={hasPendingRun} />
       <main className={styles.main}>
         <RunList
-          runs={runs}
+          runs={completedRuns}
           revealedUpTo={revealedUpTo}
-          onRecordOutcome={recordOutcome}
           onReveal={revealUpTo}
         />
       </main>

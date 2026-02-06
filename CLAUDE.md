@@ -24,7 +24,7 @@ Ravenswatch Gauntlet tracker for YouTuber Positive4ce. Client-side React app hos
 - `src/types/index.ts` — Character, Modifier (with deprecated flag), Run (with optional youtubeUrl), ModifierPoolState, GauntletStats
 - `src/logic/` — modifierSelection.ts (exhaustive rotation algorithm), streaks.ts (stats computation), gauntlet.ts (next character)
 - `src/hooks/useGameState.ts` — main state hook, merges hardcoded + localStorage runs
-- `src/components/` — Header, Stats, NextRunButton, RunList, RunCard, ModifierBadge, GauntletBanner
+- `src/components/` — Header, Stats, RunList, RunCard, ModifierBadge, GauntletBanner, SpoilerControls
 - `src/utils/storage.ts` — localStorage helpers (key: `gauntlet-local-state`)
 - `tests/` — modifierSelection.test.ts, streaks.test.ts (16 tests total)
 
@@ -35,7 +35,7 @@ Ravenswatch Gauntlet tracker for YouTuber Positive4ce. Client-side React app hos
 - **Modifier selection**: 10 active modifiers (deprecated ones excluded), pick 5 per run via exhaustive rotation. Pool state is reconstructed by replaying all past selections from run history (not stored separately).
 - **Character cycling**: 12 characters cycle in order by string ID regardless of win/loss.
 - **Gauntlet complete**: Detected when current win streak >= 12.
-- **Pending run**: Only one pending run (outcome=null) allowed at a time. "Next Run" button disabled until current run has outcome recorded.
+- **Archive mode**: Site currently operates as a reference archive. Run creation functionality removed; runs are added by editing `src/data/runs.ts` directly.
 - **Reset**: "Reset Local Data" button clears localStorage, falls back to hardcoded runs only.
 - **YouTube links**: Runs can have optional `youtubeUrl` field linking to the video of that run.
 - **vite base path**: Set to `/the-gauntlet/` for GitHub Pages deployment.

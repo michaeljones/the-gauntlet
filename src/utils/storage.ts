@@ -14,10 +14,6 @@ export function loadLocalState(): LocalState | null {
   }
 }
 
-export function saveLocalState(state: LocalState): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
 export function clearLocalState(): void {
   localStorage.removeItem(STORAGE_KEY);
 }
