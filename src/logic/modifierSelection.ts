@@ -2,6 +2,7 @@ import { MODIFIERS } from '../data/modifiers';
 import type { ModifierPoolState } from '../types';
 
 const ALL_MODIFIER_IDS = MODIFIERS.map((m) => m.id);
+const ACTIVE_MODIFIER_IDS = MODIFIERS.filter((m) => !m.deprecated).map((m) => m.id);
 const MODIFIERS_PER_RUN = 5;
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -28,7 +29,7 @@ export function selectModifiers(pool: ModifierPoolState): {
     // Take all remaining, then refill and pick the rest
     const fromCurrent = [...remaining];
     const usedIds = new Set(fromCurrent);
-    const refill = ALL_MODIFIER_IDS.filter((id) => !usedIds.has(id));
+    const refill = ACTIVE_MODIFIER_IDS.filter((id) => !usedIds.has(id));
     const shuffledRefill = shuffleArray(refill);
     const needed = MODIFIERS_PER_RUN - fromCurrent.length;
     const fromRefill = shuffledRefill.slice(0, needed);
@@ -83,9 +84,13 @@ function replayPool(allModifierSelections: string[][]): ModifierPoolState {
     }
   }
 
+  // Filter out deprecated modifiers from the final pool
+  const activeSet = new Set(ACTIVE_MODIFIER_IDS);
+  remaining = remaining.filter((id) => activeSet.has(id));
+
   return { remaining };
 }
 
 export function initialPool(): ModifierPoolState {
-  return { remaining: [...ALL_MODIFIER_IDS] };
+  return { remaining: [...ACTIVE_MODIFIER_IDS] };
 }

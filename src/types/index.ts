@@ -6,6 +6,7 @@ export interface Character {
 export interface Modifier {
   id: string;
   name: string;
+  deprecated?: boolean;
 }
 
 export interface Run {

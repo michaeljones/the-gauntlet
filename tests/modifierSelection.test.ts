@@ -6,7 +6,7 @@ describe('modifierSelection', () => {
     const pool = initialPool();
     const { selected, newPool } = selectModifiers(pool);
     expect(selected).toHaveLength(5);
-    expect(newPool.remaining).toHaveLength(6);
+    expect(newPool.remaining).toHaveLength(5);
     // No overlap between selected and remaining
     const overlap = selected.filter((id) => newPool.remaining.includes(id));
     expect(overlap).toHaveLength(0);
@@ -27,43 +27,37 @@ describe('modifierSelection', () => {
     expect(selected).toContain('dried-up-fountains');
     expect(selected).toContain('inflation');
     // Remaining should be from the refill pool minus what was picked
-    // Refill had 9 items (11 - 2), picked 3, so 6 remaining
-    expect(newPool.remaining).toHaveLength(6);
+    // Refill had 8 items (10 - 2), picked 3, so 5 remaining
+    expect(newPool.remaining).toHaveLength(5);
   });
 
   it('handles empty pool by refilling completely', () => {
     const pool = { remaining: [] as string[] };
     const { selected, newPool } = selectModifiers(pool);
     expect(selected).toHaveLength(5);
-    expect(newPool.remaining).toHaveLength(6);
+    expect(newPool.remaining).toHaveLength(5);
   });
 
-  it('all 11 modifiers appear over exhaustive cycle', () => {
+  it('all 10 active modifiers appear over exhaustive cycle', () => {
     let pool = initialPool();
     const allSelected: string[] = [];
 
-    // Run 1: pick 5 from 11, leaving 6
+    // Run 1: pick 5 from 10, leaving 5
     const r1 = selectModifiers(pool);
     allSelected.push(...r1.selected);
     pool = r1.newPool;
-    expect(pool.remaining).toHaveLength(6);
+    expect(pool.remaining).toHaveLength(5);
 
-    // Run 2: pick 5 from 6, leaving 1
+    // Run 2: pick 5 from 5, leaving 0 (refills)
     const r2 = selectModifiers(pool);
     allSelected.push(...r2.selected);
     pool = r2.newPool;
-    expect(pool.remaining).toHaveLength(1);
 
-    // Run 3: pick 1 remaining + refill + pick 4 more
-    const r3 = selectModifiers(pool);
-    allSelected.push(...r3.selected);
-    pool = r3.newPool;
-
-    // After 3 runs, we should have 15 selections total
-    expect(allSelected).toHaveLength(15);
-    // All 11 modifiers should appear at least once
+    // After 2 runs, we should have 10 selections total
+    expect(allSelected).toHaveLength(10);
+    // All 10 active modifiers should appear exactly once
     const unique = new Set(allSelected);
-    expect(unique.size).toBe(11);
+    expect(unique.size).toBe(10);
   });
 
   it('no modifier repeats within first two runs', () => {
@@ -94,7 +88,7 @@ describe('modifierSelection', () => {
 
   it('reconstructs pool from empty history as initial', () => {
     const pool = reconstructPool([]);
-    expect(pool.remaining).toHaveLength(11);
+    expect(pool.remaining).toHaveLength(10);
     expect(pool.remaining).toEqual(initialPool().remaining);
   });
 });

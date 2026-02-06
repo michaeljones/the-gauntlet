@@ -9,7 +9,7 @@ export const MODIFIERS: Modifier[] = [
   { id: 'disease', name: 'Disease' },
   { id: 'invigorating-death', name: 'Invigorating death' },
   { id: 'angry-birds', name: 'Angry birds' },
-  { id: 'shadowy-fog', name: 'Shadowy fog' },
+  { id: 'shadowy-fog', name: 'Shadowy fog', deprecated: true },
   { id: 'oppressive-nightmare', name: 'Oppresive nightmare' },
   { id: 'berserker-foes', name: 'Beserker foes' },
 ];
