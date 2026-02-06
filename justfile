@@ -1,3 +1,6 @@
+start:
+    zellij -l zellij.kdl
+
 # Development
 dev:
     npm run dev
