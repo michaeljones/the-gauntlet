@@ -5,16 +5,25 @@ import styles from './RunCard.module.css';
 
 interface RunCardProps {
   run: Run;
+  isRevealed: boolean;
   onRecordOutcome: (runId: string, outcome: 'win' | 'loss') => void;
+  onReveal: (runNumber: number) => void;
 }
 
-export function RunCard({ run, onRecordOutcome }: RunCardProps) {
+export function RunCard({ run, isRevealed, onRecordOutcome, onReveal }: RunCardProps) {
   const characterIndex = CHARACTERS.findIndex((c) => c.id === run.characterId);
   const character = CHARACTERS[characterIndex];
   const characterPosition = characterIndex + 1;
 
+  const isPending = run.outcome === null;
+  const showOutcome = isPending || isRevealed;
+
+  const cardClass = showOutcome
+    ? `${styles.card} ${run.outcome ? styles[run.outcome] : styles.pending}`
+    : `${styles.card} ${styles.hidden}`;
+
   return (
-    <div className={`${styles.card} ${run.outcome ? styles[run.outcome] : styles.pending}`}>
+    <div className={cardClass}>
       <div className={styles.header}>
         <span className={styles.runNumber}>Run {run.runNumber}</span>
         {run.youtubeUrl && (
@@ -32,10 +41,15 @@ export function RunCard({ run, onRecordOutcome }: RunCardProps) {
           {character?.name ?? 'Unknown'}{' '}
           <span className={styles.position}>({characterPosition}/12)</span>
         </span>
-        {run.outcome && (
+        {showOutcome && run.outcome && (
           <span className={`${styles.outcome} ${styles[`outcome_${run.outcome}`]}`}>
             {run.outcome.toUpperCase()}
           </span>
+        )}
+        {!showOutcome && (
+          <button className={styles.revealBtn} onClick={() => onReveal(run.runNumber)}>
+            Reveal
+          </button>
         )}
       </div>
       <div className={styles.modifiers}>
@@ -43,7 +57,7 @@ export function RunCard({ run, onRecordOutcome }: RunCardProps) {
           <ModifierBadge key={id} modifierId={id} />
         ))}
       </div>
-      {run.outcome === null && (
+      {isPending && (
         <div className={styles.actions}>
           <button
             className={`${styles.btn} ${styles.winBtn}`}

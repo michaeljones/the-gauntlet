@@ -4,10 +4,12 @@ import styles from './RunList.module.css';
 
 interface RunListProps {
   runs: Run[];
+  revealedUpTo: number;
   onRecordOutcome: (runId: string, outcome: 'win' | 'loss') => void;
+  onReveal: (runNumber: number) => void;
 }
 
-export function RunList({ runs, onRecordOutcome }: RunListProps) {
+export function RunList({ runs, revealedUpTo, onRecordOutcome, onReveal }: RunListProps) {
   const reversed = [...runs].reverse();
 
   if (reversed.length === 0) {
@@ -21,7 +23,13 @@ export function RunList({ runs, onRecordOutcome }: RunListProps) {
   return (
     <div className={styles.list}>
       {reversed.map((run) => (
-        <RunCard key={run.id} run={run} onRecordOutcome={onRecordOutcome} />
+        <RunCard
+          key={run.id}
+          run={run}
+          isRevealed={run.runNumber <= revealedUpTo}
+          onRecordOutcome={onRecordOutcome}
+          onReveal={onReveal}
+        />
       ))}
     </div>
   );

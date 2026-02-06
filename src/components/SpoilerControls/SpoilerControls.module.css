@@ -1,0 +1,45 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.status {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+.revealAllBtn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ctp-lavender);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--ctp-lavender) 15%, transparent);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.revealAllBtn:hover {
+  background: color-mix(in srgb, var(--ctp-lavender) 25%, transparent);
+}
+
+.hideAllBtn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-dim);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.hideAllBtn:hover {
+  color: var(--color-text);
+}

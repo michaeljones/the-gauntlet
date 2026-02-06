@@ -21,3 +21,23 @@ export function saveLocalState(state: LocalState): void {
 export function clearLocalState(): void {
   localStorage.removeItem(STORAGE_KEY);
 }
+
+const SPOILER_KEY = 'gauntlet-spoiler-state';
+
+export interface SpoilerState {
+  revealedUpToRunNumber: number;
+}
+
+export function loadSpoilerState(): SpoilerState {
+  try {
+    const raw = localStorage.getItem(SPOILER_KEY);
+    if (!raw) return { revealedUpToRunNumber: 0 };
+    return JSON.parse(raw) as SpoilerState;
+  } catch {
+    return { revealedUpToRunNumber: 0 };
+  }
+}
+
+export function saveSpoilerState(revealedUpTo: number): void {
+  localStorage.setItem(SPOILER_KEY, JSON.stringify({ revealedUpToRunNumber: revealedUpTo }));
+}

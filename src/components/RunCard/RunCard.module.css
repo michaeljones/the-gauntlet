@@ -17,6 +17,10 @@
   border-left-color: var(--color-pending);
 }
 
+.card.hidden {
+  border-left-color: var(--ctp-overlay0);
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -111,4 +115,22 @@
 .lossBtn {
   background: var(--color-loss);
   color: var(--ctp-crust);
+}
+
+.revealBtn {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ctp-lavender);
+  text-decoration: none;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--ctp-lavender) 15%, transparent);
+  transition: background 0.15s;
+  cursor: pointer;
+  border: none;
+}
+
+.revealBtn:hover {
+  background: color-mix(in srgb, var(--ctp-lavender) 25%, transparent);
 }
